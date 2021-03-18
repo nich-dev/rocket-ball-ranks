@@ -1,0 +1,6 @@
+<mat-list *ngFor="let p of players">
+    <mat-list-item *ngFor="let a of p.accounts">
+        {{ a.name }} - {{ a.id }} -
+        <button mat-raised-button (click)="updateRanksFor(a.id)">Update</button>
+    </mat-list-item>
+</mat-list>

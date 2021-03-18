@@ -1,0 +1,44 @@
+#filter-container {
+    font-size: 1em;
+}
+
+@media (min-width: 800px) {
+    section:first-child {
+        margin-left: 0px;
+    }
+}
+
+section {
+    margin-left: 2em;
+    font-size: 0.85rem;
+
+    @media (max-width: 600px) {
+        margin-left: 4px;
+
+        &:first-of-type {
+            display: none;
+        }
+    }
+}
+
+.checkbox-group-title {
+    display: block;
+    font-size: 0.8em;
+}
+
+.rank-icon {
+    width: 2.75em;
+    height: 2.75em;
+    vertical-align: middle;
+    padding: 0 0.5em;
+    background: radial-gradient(circle, rgba(2,0,36,0.2) 0%, rgba(255,255,255,0) 60%);
+}
+
+.player-checkbox {
+    padding: 1em;
+
+    &:first-of-type {
+        padding-left: 0px;
+    }
+}
+

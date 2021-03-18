@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "rocketballranks"
+  },
+  "targets": {
+    "rocketballranks": {
+      "hosting": {
+        "rocket-ball-stats": [
+          "rocketballranks"
+        ]
+      }
+    }
+  }
+}

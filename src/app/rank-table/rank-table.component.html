@@ -1,0 +1,124 @@
+<div id="colander">
+    <rank-filter
+        id="filter"
+        *ngIf="playerNames && playerNames.length"
+        (filter)="applyFilter($event)"
+        [players]="playerNames"
+    ></rank-filter>
+</div>
+
+<div id="tablecloth" class="margin-horiz__md">
+    <table
+        mat-table
+        matSort
+        *ngIf="sortedTableItems"
+        [dataSource]="sortedTableItems"
+        (matSortChange)="sortData($event)"
+        [matSortStart]="'desc'"
+    >
+        <!--nickname-->
+        <ng-container matColumnDef="nickname" sticky>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Nickname</th>
+            <td mat-cell *matCellDef="let element">{{ element.accountNickName }}</td>
+        </ng-container>
+
+        <!--player-->
+        <ng-container matColumnDef="player">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Who am</th>
+            <td mat-cell *matCellDef="let element">{{ element.playerName }}</td>
+        </ng-container>
+
+        <!--secondaryName-->
+        <ng-container matColumnDef="secondaryName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+            <td mat-cell *matCellDef="let element">{{ element.secondaryName }}</td>
+        </ng-container>
+
+        <!--id-->
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef>Steam</th>
+            <td mat-cell *matCellDef="let element">
+                <a href="https://steamcommunity.com/profiles/{{element.id}}" target="_blank" class="link-icon">
+                    <mat-icon>launch</mat-icon>
+                </a>
+            </td>
+        </ng-container>
+
+        <!--update-->
+        <ng-container matColumnDef="update">
+            <th mat-header-cell *matHeaderCellDef>Update</th>
+            <td mat-cell *matCellDef="let element">
+                <update-rank-button
+                    [item]="element"
+                    (clicked)="updatePlayer($event)"
+                ></update-rank-button>
+            </td>
+        </ng-container>
+
+        <!--ranks-->
+        <!--casual-->
+        <ng-container matColumnDef="casual">
+            <th mat-header-cell *matHeaderCellDef class="rank" mat-sort-header>Casual</th>
+            <td mat-cell *matCellDef="let element" class="rank">
+                <rank-badge *ngIf="element.unrankedRank" [rank]="element.unrankedRank"></rank-badge>
+            </td>
+        </ng-container>
+
+        <!--duel-->
+        <ng-container matColumnDef="duel">
+            <th mat-header-cell *matHeaderCellDef class="rank" mat-sort-header>Duel 1v1</th>
+            <td mat-cell *matCellDef="let element" class="rank">
+                <rank-badge *ngIf="element.duelRank" [rank]="element.duelRank"></rank-badge>
+            </td>
+        </ng-container>
+
+        <!--doubles-->
+        <ng-container matColumnDef="doubles">
+            <th mat-header-cell *matHeaderCellDef class="rank" mat-sort-header>Doubles 2v2</th>
+            <td mat-cell *matCellDef="let element" class="rank">
+                <rank-badge *ngIf="element.doublesRank" [rank]="element.doublesRank"></rank-badge>
+            </td>
+        </ng-container>
+
+        <!--standard-->
+        <ng-container matColumnDef="standard">
+            <th mat-header-cell *matHeaderCellDef class="rank" mat-sort-header>Standard 3v3</th>
+            <td mat-cell *matCellDef="let element" class="rank">
+                <rank-badge *ngIf="element.standardRank" [rank]="element.standardRank"></rank-badge>
+            </td>
+        </ng-container>
+
+        <!--hoops-->
+        <ng-container matColumnDef="hoops">
+            <th mat-header-cell *matHeaderCellDef class="rank" mat-sort-header>Hoops</th>
+            <td mat-cell *matCellDef="let element" class="rank">
+                <rank-badge *ngIf="element.hoopsRank" [rank]="element.hoopsRank"></rank-badge>
+            </td>
+        </ng-container>
+
+        <!--rumble-->
+        <ng-container matColumnDef="rumble">
+            <th mat-header-cell *matHeaderCellDef class="rank" mat-sort-header>Rumble</th>
+            <td mat-cell *matCellDef="let element" class="rank">
+                <rank-badge *ngIf="element.rumbleRank" [rank]="element.rumbleRank"></rank-badge>
+            </td>
+        </ng-container>
+
+        <!--dropshot-->
+        <ng-container matColumnDef="dropshot">
+            <th mat-header-cell *matHeaderCellDef class="rank" mat-sort-header>Dropshot</th>
+            <td mat-cell *matCellDef="let element" class="rank">
+                <rank-badge *ngIf="element.dropshotRank" [rank]="element.dropshotRank"></rank-badge>
+            </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching</td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,37 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <span class="spacer"></span>
+        <section>
+            <mat-form-field appearance="outline">
+                <mat-label>How bad are we playing tonight</mat-label>
+                <mat-select
+                    [(value)]="tier"
+                    (selectionChange)="dispatch()"
+                >
+                    <mat-option
+                        *ngFor="let tier of tierOptions"
+                        [value]="tier.name"
+                    >
+                        <div class="tier-option">
+                            <img src="/assets/icons/{{ tier.id }}.png" class="rank-icon">
+                            <span>{{ tier.name }}</span>
+                        </div>
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </section>
+
+        <section *ngIf="players && players.length">
+            <mat-checkbox
+                class="player-checkbox"
+                *ngFor="let playerName of players"
+                (change)="playersChanged(playerName)"
+                [checked]="true"
+            >{{ playerName }}</mat-checkbox>
+        </section>
+
+        <section>
+            <mat-slide-toggle (change)="playlistsSliderChanged($event)">All Playlists</mat-slide-toggle>
+        </section>
+    </mat-toolbar-row>
+</mat-toolbar>

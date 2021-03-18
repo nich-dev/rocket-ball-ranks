@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <span>Rocket Ball Ranks</span>
+        <span class="spacer"></span>
+        <mat-slide-toggle
+            (change)="themeChanged($event)"
+            [checked]="darkModeActive"
+        >Dark Mode</mat-slide-toggle>
+        <button mat-icon-button class="nav-button" (click)="logout()">
+            Logout
+            <mat-icon>arrow_forward</mat-icon>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>

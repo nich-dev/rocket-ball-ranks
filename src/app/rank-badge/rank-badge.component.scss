@@ -1,0 +1,82 @@
+.rank-icon {
+    width: 2.25em;
+    height: 2.25em;
+    background: radial-gradient(circle, rgba(2,0,36,1) 10%, rgba(255,255,255,0) 60%);
+}
+
+.diamond {
+    background-color: #127eeb !important; //#6acefb #08ace4 #0745a9
+    color: #fefefe !important;
+
+    .rank-icon {
+        background: radial-gradient(circle, rgba(2,0,36,.75) 10%, rgba(255,255,255,0) 60%);
+    }
+}
+
+.champion {
+    background-color: #7942ca !important; //#a272e5 #8760c6 #ac54fc
+    color: #fefefe !important;
+}
+
+.platinum {
+    background-color: #80d9f4 !important; //#42baea #64d4f4
+    color: #121212 !important;
+
+    .rank-icon {
+        background: radial-gradient(circle, rgba(2,0,36,.75) 10%, rgba(255,255,255,0) 60%);
+    }
+}
+
+.gold {
+    background-color: #f2e04d !important; //#d4b654
+    color: #121212 !important;
+
+    .rank-icon {
+        background: radial-gradient(circle, rgba(2,0,36,.5) 10%, rgba(255,255,255,0) 60%);
+    }
+}
+
+.silver {
+    background-color: #777776 !important; //#575655 #b8b8b7
+    color: #fefefe !important;
+}
+
+.bronze {
+    background-color: #f09e46 !important; //#965813
+    color: #121212 !important;
+}
+
+.grand-champion {
+    background-color: #fc2957 !important; //#fc7b85
+    color: #fefefe !important;
+}
+
+.unranked {
+    background-color: #343434 !important;
+    color: #fefefe !important;
+}
+
+.supersonic {
+    background-color: #00aa00 !important;
+    color: #121212 !important;
+}
+
+
+
+.rank-text {
+    display: none;
+
+    &__short {
+        display: unset;
+    }
+
+    @media (min-width: 800px) {
+        display: unset;
+
+        &__short {
+            display: none;
+        }
+    }
+}
+
+
